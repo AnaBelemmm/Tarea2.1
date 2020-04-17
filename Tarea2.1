@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+{/* Con base en el código visto en clase*/}
+
 typedef struct _token{
     int clase;
     char valor[32];
@@ -31,7 +33,7 @@ relacionales [>|<|>=|<=|=|<>]
 asignacion [==]
 logicos [$|^|¬]
 operadores ({aritmetico}|{relacionales}|{asignacion}|{logicos})
-%%
+%% 
 {id}    {
             TOKEN.clase = ID;
             strcpy(TOKEN.valor, yytext);
@@ -62,7 +64,7 @@ operadores ({aritmetico}|{relacionales}|{asignacion}|{logicos})
                 TOKEN.line = yylineno;
                 return FLOTANTE;
         }
-[ \t\n\r] {/* Ignora los espacios en blanco*/}
+[ \t\n\r] {/* De esta forma se ignoran los espacios en blanco*/}
 .   {error(yytext);}
 %%
 int yywrap(){
